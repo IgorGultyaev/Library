@@ -1,4 +1,4 @@
-package com.company.library;
+package com.company.libraryStaff;
 
 import com.company.Literature.Literature;
 
@@ -20,7 +20,6 @@ public class OutSource extends User{
     }
     @Override
     public void getBook(Literature literature, User fromUser) {
-        System.out.println("\n" +
-                "Вы не можете получить книгу, для получения книжки Вам необходимо зарегестрироваться как посетитель и получать табельный номер\n");
+        System.out.println("Вы не можете получить книгу, у Вас нет табельного номера");
     }
 }

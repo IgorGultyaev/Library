@@ -1,6 +1,6 @@
-package com.company.library;
+package com.company.libraryStaff;
 
-public class Specialist extends Manager implements Reader {
+public class Specialist extends Manager implements Reader, {
     private Category cat;
     public Specialist(String name, int seserviceNum, String post, Category cat) {
         super(name, seserviceNum, post);

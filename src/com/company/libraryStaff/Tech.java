@@ -1,6 +1,8 @@
-package com.company.library;
+package com.company.libraryStaff;
 
-public class Tech extends Specialist{
+import com.company.Literature.Literature;
+
+public class Tech extends Specialist implements Reader, Supplier{
 
     public Tech(String name, int seserviceNum, String post, Category cat) {
         super(name,seserviceNum,post, cat);
@@ -10,4 +12,6 @@ public class Tech extends Specialist{
     public String toString() {
         return "Tech{} " + super.toString();
     }
+
+
 }

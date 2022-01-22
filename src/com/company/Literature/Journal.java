@@ -1,12 +1,10 @@
 package com.company.Literature;
 
-import java.util.Date;
-
 public class Journal extends Literature{
-    public String entity = "Журнал ";
-    private int issueNumber;
-    private int year;
-    private String name;
+    private final String entity = "Журнал ";
+    private final int issueNumber;
+    private final int year;
+    private final String name;
     public Journal (String name, int issueNumber, int year){
         this.issueNumber = issueNumber;
         this.year = year;

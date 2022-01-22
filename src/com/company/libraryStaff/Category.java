@@ -1,4 +1,4 @@
-package com.company.library;
+package com.company.libraryStaff;
 
 public enum Category {
     I,
