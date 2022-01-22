@@ -2,7 +2,7 @@ package com.company.libraryStaff;
 
 import com.company.Literature.Literature;
 
-public abstract class User implements Reader {
+public abstract class User {
     private String name;
 
     public User(String name){

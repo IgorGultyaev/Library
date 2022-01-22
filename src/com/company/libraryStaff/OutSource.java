@@ -1,7 +1,5 @@
 package com.company.libraryStaff;
 
-import com.company.Literature.Literature;
-
 public class OutSource extends User{
     private String company;
     private String purpose;
@@ -18,8 +16,5 @@ public class OutSource extends User{
                 ", purpose='" + purpose + '\'' +
                 "} " + super.toString();
     }
-    @Override
-    public void getBook(Literature literature, User fromUser) {
-        System.out.println("Вы не можете получить книгу, у Вас нет табельного номера");
-    }
+
 }

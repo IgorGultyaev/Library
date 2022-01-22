@@ -14,4 +14,8 @@ public class Tech extends Specialist implements Reader, Supplier{
     }
 
 
+    @Override
+    public void BringBook(Librarian librarian, Supplier supplier, Literature... literatureOrder) {//TODO дописать метод
+
+    }
 }
