@@ -1,22 +1,33 @@
 package com.company.library;
 
+import com.company.Literature.Literature;
+
 import java.math.BigDecimal;
 
-public class Manager extends Staff {
+public class Manager extends User implements Reader {
     private BigDecimal salary;
     private int specialAllowance;
-    public Manager(String name,int serviceNum, String post, BigDecimal salary, int specialAllowance){
+    private Literature literature;
+    public Manager(String name,int serviceNum, String post){
         super(name);
-        this.specialAllowance = specialAllowance;
-
     }
 
     @Override
     public String toString() {
-        return super.toString() +
-                " Manager{" +
+        return  " Manager{" +
                 "salary=" + salary +
                 ", specialAllowance=" + specialAllowance +
                 "} " + super.toString();
+    }
+
+
+    @Override
+    public void getBook(Literature literature, User fromUser) {
+        if (fromUser.literature != null) {
+            this.literature = literature;
+            fromUser.literature = null;
+        }else {
+            System.out.println("Такой киниги у пользователя нет!");
+        }
     }
 }

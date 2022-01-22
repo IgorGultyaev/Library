@@ -1,18 +1,15 @@
 package com.company.library;
 
-import java.math.BigDecimal;
-
-public class Specialist extends Manager {
+public class Specialist extends Manager implements Reader {
     private Category cat;
-    public Specialist(String name, int seserviceNum, String post, BigDecimal salary, int specialAllowance, Category cat) {
-        super(name, seserviceNum, post, salary, specialAllowance);
+    public Specialist(String name, int seserviceNum, String post, Category cat) {
+        super(name, seserviceNum, post);
         this.cat = cat;
     }
 
     @Override
     public String toString() {
-        return super.toString() +
-                " Specialist{" +
+        return " Specialist{" +
                 "cat=" + cat +
                 "} " + super.toString();
     }

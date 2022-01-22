@@ -7,11 +7,15 @@ public class Bibliographer extends Manager{
     public Bibliographer(String name,
                          int serviceNum,
                          String post,
-                         BigDecimal salary,
-                         int specialAllowance,
                          String specialization) {
-        super(name,serviceNum, post, salary, Math.min(specialAllowance,3));
+        super(name,serviceNum, post);
         this.specialization = specialization;
     }
 
+    @Override
+    public String toString() {
+        return "Bibliographer{" +
+                "specialization='" + specialization + '\'' +
+                "} " + super.toString();
+    }
 }

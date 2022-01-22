@@ -1,8 +1,8 @@
 package com.company.library;
 //берет и возвращает книги
-import com.company.Literature.*;
+
+import com.company.Literature.Literature;
 
 public interface Reader {
-    String takeBook(Literature literature);
-    String returnBook (Literature literature);
+    void getBook(Literature literature, User fromUser);
 }
