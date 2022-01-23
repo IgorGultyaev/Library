@@ -17,18 +17,16 @@ public class Manager extends User implements Reader {
     }
 
     @Override
-    public void tekeBook(Literature literature) {//TODO дописать метод
+    public void tekeBook(Literature literature) {
         this.literature = literature;
-        System.out.println("Сотрудник" + this.post + " табельный номер " + this.serviceNum + super.getName() +
-                "взял" + literature.getName());
+        System.out.println(" Сотрудник " + this.post + " табельный номер " + this.serviceNum + " " + super.getName() +
+                " взял " + literature.getName());
     }
 
     @Override
-    public Literature returnBook() {//TODO дописать метод
-        Literature transfer = this.literature;
+    public void returnBook() {
+        System.out.println("Посетитель " + this.getName() + " отдал " + this.literature.getName());
         this.literature = null;
-        System.out.println(this.getName() + " " + this.post + " отдает " + transfer.getName() + "в библиотеку");
-        return transfer;
     }
 
     public String getName() {
@@ -36,13 +34,19 @@ public class Manager extends User implements Reader {
     }
 
     public void printFiles(Files[] files){
+        System.out.println();
+        System.out.println("В библиотеке Вы можете взять следующие книги");
         for (int iFile = 0; iFile < files.length; iFile++) {
             System.out.print(iFile+1 +" "+ files[iFile].getLiterature().getName());
             if (files[iFile].getReader() != null) {
-                System.out.print(" находится у читателя" + files[iFile].getReader().getName());
+                System.out.println(" находится у читателя " + files[iFile].getReader().getName());
             }else {
                 System.out.println(" - литература доступна");
             }
         }
+    }
+
+    public Literature getLiterature() {
+        return literature;
     }
 }

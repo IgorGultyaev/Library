@@ -18,4 +18,12 @@ public class Order {
     public Literature[] getList() {
         return list;
     }
+
+    public Librarian getCustomer() {
+        return customer;
+    }
+
+    public Supplier getExecutor() {
+        return executor;
+    }
 }

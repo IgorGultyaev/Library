@@ -22,11 +22,13 @@ public class Visitor extends User implements Reader{
     }
 
     @Override
-    public Literature returnBook() {
-        Literature transfer = this.literature;
+    public void returnBook() {
+        System.out.println("Посетитель " + this.getName() + " отдал " + this.literature.getName());
         this.literature = null;
-        System.out.println("Посетитель " + this.getName() + "отдал " + this.literature.getName());
-        return transfer;
+    }
+
+    public Literature getLiterature() {
+        return literature;
     }
 }
 

@@ -18,8 +18,9 @@ public class Specialist extends Manager implements Reader, Administrator{
         Files foundBook = findBook(files, literature);
         if (foundBook.getReader() == null){
             foundBook.setReader(newReader);
-            System.out.println("Администратор Выдал книгу: " + newReader.getName() + "читателю по имни " + newReader.getName());
-            newReader.tekeBook(foundBook.getLiterature());
+            foundBook.setTakeDate(new Date());
+            System.out.println("Администратор Выдал книгу: " + foundBook.getLiterature().getName() + " читателю по имни " + newReader.getName());
+//            System.out.println(foundBook.getTakeDate());
             }else {
             System.out.println("Книга находиться у пользователя" + foundBook.getReader().getName() +
                     " и не может быть выдана");
@@ -33,22 +34,26 @@ public class Specialist extends Manager implements Reader, Administrator{
         Files returnedBook = findBook(files, literature);
         returnedBook.setReader(null);
         returnedBook.setTakeDate(null);
-        System.out.println("Пользователь: " + returned.getName() + "вернул книгу" + returned.getName() + "в библиотеку");
-        returned.returnBook();
+        System.out.println("Администратор " + this.getName() + " отнес " + literature.getName() + " в библиотеку");
     }
 
     @Override
     public void overdueNotification(Files[] files) {
         long dayOver = 0;
+        int useDay = 23;
         for (int findOverdueBook=0; findOverdueBook < files.length; findOverdueBook++){
-            dayOver = files[findOverdueBook].getTakeDate().getTime() - new Date().getTime();
-            if (dayOver > 10 ) {
-                System.out.println("Пользователь: " +
-                        files[findOverdueBook].getReader().getName() +
-                        " просрочил книгу: " +
-                        files[findOverdueBook].getLiterature().getName() +
-                        " на " + dayOver + " дней");
+            if (files[findOverdueBook].getReader() != null) {
+                dayOver = new Date().getTime() - files[findOverdueBook].getTakeDate().getTime();
+                if (dayOver > useDay ) {
+                    System.out.println("Пользователь: " +
+                            files[findOverdueBook].getReader().getName() +
+                            " просрочил книгу: " +
+                            files[findOverdueBook].getLiterature().getName() +
+                            " на " + (dayOver - useDay) + " дней");
+                    dayOver = 0;
+                }
             }
+
         }
     }
 
@@ -59,9 +64,7 @@ public class Specialist extends Manager implements Reader, Administrator{
         for (int findOverdueBook=0; findOverdueBook < files.length; findOverdueBook++){
             if (files[findOverdueBook].getLiterature() == desiredLiterature) {
                 find = true;
-                file= files[findOverdueBook];
-                System.out.println("Книга: " + files[findOverdueBook].getLiterature().getName() +
-                        "она находиться у " + files[findOverdueBook].getReader().getName());
+                file = files[findOverdueBook];
             }
         }
         if (find) {

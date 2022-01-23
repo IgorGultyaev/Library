@@ -23,14 +23,15 @@ public class Bibliographer extends Manager implements Reader, Librarian{
     @Override
        public Order OrderBook(Supplier supplier, Literature...literatureOrder){ // TODO попробовать вызвать метод с пустым массиво и при ошибке вставить исключение
         int position = 0;
-//        Librarian.NumOrder++;
+        System.out.println();
         System.out.println("Заказ:");
         for (Literature order:
                 literatureOrder) {
-            System.out.println(literatureOrder[position].toString());
+            System.out.println(literatureOrder[position].getName());
             position++;
         }
-        System.out.println("Передан исполнителю: "+ supplier.getUser().getName());
+        System.out.println("От " + this.getName());
+        System.out.println("Сформирован для исполнителя: "+ supplier.getUser().getName());
         return new Order(literatureOrder,supplier,this);
     }
 
@@ -38,24 +39,23 @@ public class Bibliographer extends Manager implements Reader, Librarian{
     public Reader getUser() {
         return this;
     }
+
     public Files[] transferFromBStorageToLibrary(Files[] deliveredBooks, Files[] files){
         Files[] updateFiles = new Files[files.length + deliveredBooks.length];
         int countNewFiles = 0;
+        System.out.println();
         System.out.println("Обновление картотеки:");
         for (int count = 0; count < files.length; count++){
-            updateFiles[count].setTakeDate(files[count].getTakeDate());
-            updateFiles[count].setReader(files[count].getReader());
-            updateFiles[count].setLiterature(files[count].getLiterature());
-            System.out.println(count + "Книга " + updateFiles[count].getLiterature().getName());
+            updateFiles[count] = new Files(files[count].getReader(),files[count].getLiterature(),files[count].getTakeDate());
+            System.out.println(count+1 + " " + updateFiles[count].getLiterature().getName());
             countNewFiles++;
-
         }
+
+        files = null;
         for (int count = 0; count < deliveredBooks.length; count++){
             System.out.println("Добавлены со склада:");
-            updateFiles[countNewFiles++].setTakeDate(deliveredBooks[count].getTakeDate());
-            updateFiles[countNewFiles++].setReader(deliveredBooks[count].getReader());
-            updateFiles[countNewFiles++].setLiterature(deliveredBooks[count].getLiterature());
-            System.out.println(countNewFiles++ + "Книга " + updateFiles[countNewFiles++].getLiterature().getName());
+            updateFiles[countNewFiles] = new Files(deliveredBooks[count].getReader(),deliveredBooks[count].getLiterature(),deliveredBooks[count].getTakeDate());
+            System.out.println(countNewFiles+1 + " " + updateFiles[countNewFiles].getLiterature().getName());
             countNewFiles++;
         }
         return updateFiles;
