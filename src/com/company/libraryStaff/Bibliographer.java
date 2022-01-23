@@ -35,7 +35,7 @@ public class Bibliographer extends Manager implements Reader, Librarian{
     }
 
     @Override
-    public User getUser() {
+    public Reader getUser() {
         return this;
     }
     public Files[] transferFromBStorageToLibrary(Files[] deliveredBooks, Files[] files){
@@ -44,7 +44,7 @@ public class Bibliographer extends Manager implements Reader, Librarian{
         System.out.println("Обновление картотеки:");
         for (int count = 0; count < files.length; count++){
             updateFiles[count].setTakeDate(files[count].getTakeDate());
-            updateFiles[count].setUser(files[count].getUser());
+            updateFiles[count].setReader(files[count].getReader());
             updateFiles[count].setLiterature(files[count].getLiterature());
             System.out.println(count + "Книга " + updateFiles[count].getLiterature().getName);
             countNewFiles++;
@@ -53,7 +53,7 @@ public class Bibliographer extends Manager implements Reader, Librarian{
         for (int count = 0; count < deliveredBooks.length; count++){
             System.out.println("Добавлены со склада:");
             updateFiles[countNewFiles++].setTakeDate(deliveredBooks[count].getTakeDate());
-            updateFiles[countNewFiles++].setUser(deliveredBooks[count].getUser());
+            updateFiles[countNewFiles++].setReader(deliveredBooks[count].getReader());
             updateFiles[countNewFiles++].setLiterature(deliveredBooks[count].getLiterature());
             System.out.println(countNewFiles++ + "Книга " + updateFiles[countNewFiles++].getLiterature().getName);
             countNewFiles++;

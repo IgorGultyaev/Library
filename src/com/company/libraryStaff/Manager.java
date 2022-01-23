@@ -39,6 +39,9 @@ public class Manager extends User implements Reader {
         this.literature = null;
         System.out.println(this.getName() + " " + this.post + " вернул " + transfer.getName + "в библиотеку");
         return transfer;
+    }
 
+    public String getName() {
+        return super.getName();
     }
 }

@@ -25,7 +25,7 @@ public class Tech extends Manager implements Reader, Supplier{
         System.out.println("Для библиотекаря: " + librarian.getUser().getName() + "на склад пришла следующая литература:");
         for (int assignment=0; assignment< deliveredBooks.length; assignment++){
             deliveredBooks[assignment].setLiterature(order.getList()[assignment]);
-            deliveredBooks[assignment].setUser(librarian.getUser());
+            deliveredBooks[assignment].setReader(librarian.getUser());
             deliveredBooks[assignment].setTakeDate(new Date());
             System.out.println(assignment + " " + deliveredBooks[assignment].getLiterature().getName);
             System.out.println("Заказ от " + this.getName() + " для " + librarian.getUser().getName() + " Выполнен");
