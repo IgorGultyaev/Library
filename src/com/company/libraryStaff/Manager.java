@@ -1,17 +1,20 @@
 package com.company.libraryStaff;
 
-import com.company.Files;
 import com.company.Literature.Literature;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 public class Manager extends User implements Reader {
     private BigDecimal salary;
+    private String post;
+    private int serviceNum;
     private int specialAllowance;
+    //private Literature[] literature;
     private Literature literature;
     public Manager(String name,int serviceNum, String post){
         super(name);
+        this.post = post;
+        this.serviceNum = serviceNum;
     }
 
     @Override
@@ -24,17 +27,18 @@ public class Manager extends User implements Reader {
 
 
     @Override
-    public void tekeBook(Literature... literature) {//TODO дописать метод
-
+    public void tekeBook(Literature literature) {//TODO дописать метод
+        this.literature = literature;
+        System.out.println(literature.getName + " передана в пользование сотруднику библиотеки " +
+                this.post + " табельный номер " + this.serviceNum);
     }
 
     @Override
-    public void returnBook(Literature... literature) {//TODO дописать метод
+    public Literature returnBook() {//TODO дописать метод
+        Literature transfer = this.literature;
+        this.literature = null;
+        System.out.println(this.getName() + " " + this.post + " вернул " + transfer.getName + "в библиотеку");
+        return transfer;
 
     }
-
-    public static void rrrrr(){
-
-    }
-
 }

@@ -1,7 +1,12 @@
 package com.company.libraryStaff;
 
+import com.company.Files;
 import com.company.Literature.Literature;
+import com.company.Order;
+
 //приносит книги в библиотеку
 public interface Supplier {
-    void BringBook (Librarian librarian, Supplier supplier, Literature...literatureOrder);
+    Files[] BringBook (Librarian librarian, Order order);
+    //String getName();
+    User getUser();
 }

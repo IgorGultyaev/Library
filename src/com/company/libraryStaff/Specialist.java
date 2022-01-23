@@ -14,17 +14,34 @@ public class Specialist extends Manager implements Reader, Administrator{
 
 
     @Override
-    public void getBook(Literature literature, Files[] files, User newUser) {
-        findBook(files, literature).setUser(newUser);
+    public void getBook(Literature literature, Files[] files, Reader reader) {
+        Files foundBook = findBook(files, literature);
+
+        if (foundBook.getUser() == null){
+            foundBook.setUser(newUser);
+            System.out.println("Администратор Выдал книгу: " + newUser.getName());
+            newUser.
+        }else {
+            System.out.println("Книга находиться у пользователя" + foundBook.getUser().getName() +
+                    " и не может быть выдана");
+        }
+
 
     }
 
+    @Override
+    public void backBook(Literature literature, Files[] files, User returned) {
+        Files returnedBook = findBook(files, literature);
+        returnedBook.setUser(null);
+        returnedBook.setTakeDate(null);
+        System.out.println("Пользователь: " + returned.getName() + "вернул книгу" + returned.getName() + "в библиотеку");
+    }
 
     @Override
     public void overdueNotification(Files[] files) {
-        int dayOver = 0;
+        long dayOver = 0;
         for (int findOverdueBook=0; findOverdueBook < files.length; findOverdueBook++){
-            dayOver = files[findOverdueBook].getTakeDate().getHours() - new Date().getHours();
+            dayOver = files[findOverdueBook].getTakeDate().getTime() - new Date().getTime();
             if (dayOver > 10 ) {
                 System.out.println("Пользователь: " +
                         files[findOverdueBook].getUser().getName() +
@@ -43,6 +60,8 @@ public class Specialist extends Manager implements Reader, Administrator{
             if (files[findOverdueBook].getLiterature() == desiredLiterature) {
                 find = true;
                 file= files[findOverdueBook];
+                System.out.println("Книга: " + files[findOverdueBook].getLiterature().getName +
+                        "она находиться у " + files[findOverdueBook].getUser().getName());
             }
         }
         if (find) {

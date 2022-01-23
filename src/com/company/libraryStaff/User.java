@@ -1,6 +1,5 @@
 package com.company.libraryStaff;
 
-import com.company.Literature.Literature;
 
 public abstract class User {
     private String name;

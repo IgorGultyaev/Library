@@ -5,20 +5,25 @@ import com.company.Literature.Literature;
 
 public class Visitor extends User implements Reader{
     private int serviceNum;
+    private Literature literature;
 
     public Visitor(String name, int serviceNum) {
         super(name);
+
         this.serviceNum = serviceNum;
     }
 
-    @Override
-    public void tekeBook(Literature... literature) {//TODO дописать метод
-       Manager.rrrrr();// TODO попробовать реализовать таким образом метод
 
+    @Override
+    public void tekeBook(Literature literature) {
+        this.literature = literature;
     }
 
     @Override
-    public void returnBook(Literature... literature) {//TODO дописать метод
+    public Literature returnBook() {
+        Literature transfer = this.literature;
+        this.literature = null;
+        return transfer;
     }
 }
 
