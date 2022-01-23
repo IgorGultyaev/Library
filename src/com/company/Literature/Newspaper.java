@@ -1,36 +1,17 @@
 package com.company.Literature;
 
-import java.util.Date;
-
 public class Newspaper extends Literature{
     private final String entity = "Газета ";
-    private final Date date;
     private final int num;
     private final String name;
-    public Newspaper (Date date, Integer num, String name){
-        this.date = date;
+    private int year;
+    public Newspaper (String name, int num, int year){
         this.num = num;
         this.name = name;
+        this.year = year;
     }
 
-    public Newspaper (Integer num, String name){
-        this.date = new Date();
-        this.num = num;
-        this.name = name;
-    }
-
-    public String nameEntity(){
-
-        return entity + this.name;
-    }
-
-    @Override
-    public String toString() {
-        return "Newspaper{" +
-                "entity='" + entity + '\'' +
-                ", date=" + date +
-                ", num=" + num +
-                ", name='" + name + '\'' +
-                '}';
+    public String getName() {
+        return entity+name;
     }
 }

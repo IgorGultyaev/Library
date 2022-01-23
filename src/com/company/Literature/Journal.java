@@ -15,12 +15,7 @@ public class Journal extends Literature{
     }
 
     @Override
-    public String toString() {
-        return "Journal{" +
-                "entity='" + entity + '\'' +
-                ", issueNumber=" + issueNumber +
-                ", year=" + year +
-                ", name='" + name + '\'' +
-                '}';
+    public String getName() {
+        return entity+name;
     }
 }

@@ -16,10 +16,10 @@ public class Specialist extends Manager implements Reader, Administrator{
     @Override
     public void getBook(Literature literature, Files[] files, Reader newReader) {
         Files foundBook = findBook(files, literature);
-
         if (foundBook.getReader() == null){
             foundBook.setReader(newReader);
             System.out.println("Администратор Выдал книгу: " + newReader.getName() + "читателю по имни " + newReader.getName());
+            newReader.tekeBook(foundBook.getLiterature());
             }else {
             System.out.println("Книга находиться у пользователя" + foundBook.getReader().getName() +
                     " и не может быть выдана");
@@ -29,11 +29,12 @@ public class Specialist extends Manager implements Reader, Administrator{
     }
 
     @Override
-    public void backBook(Literature literature, Files[] files, User returned) {
+    public void backBook(Literature literature, Files[] files, Reader returned) {
         Files returnedBook = findBook(files, literature);
         returnedBook.setReader(null);
         returnedBook.setTakeDate(null);
         System.out.println("Пользователь: " + returned.getName() + "вернул книгу" + returned.getName() + "в библиотеку");
+        returned.returnBook();
     }
 
     @Override
@@ -45,7 +46,7 @@ public class Specialist extends Manager implements Reader, Administrator{
                 System.out.println("Пользователь: " +
                         files[findOverdueBook].getReader().getName() +
                         " просрочил книгу: " +
-                        files[findOverdueBook].getLiterature().getName +
+                        files[findOverdueBook].getLiterature().getName() +
                         " на " + dayOver + " дней");
             }
         }
@@ -59,7 +60,7 @@ public class Specialist extends Manager implements Reader, Administrator{
             if (files[findOverdueBook].getLiterature() == desiredLiterature) {
                 find = true;
                 file= files[findOverdueBook];
-                System.out.println("Книга: " + files[findOverdueBook].getLiterature().getName +
+                System.out.println("Книга: " + files[findOverdueBook].getLiterature().getName() +
                         "она находиться у " + files[findOverdueBook].getReader().getName());
             }
         }

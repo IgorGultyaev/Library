@@ -46,7 +46,7 @@ public class Bibliographer extends Manager implements Reader, Librarian{
             updateFiles[count].setTakeDate(files[count].getTakeDate());
             updateFiles[count].setReader(files[count].getReader());
             updateFiles[count].setLiterature(files[count].getLiterature());
-            System.out.println(count + "Книга " + updateFiles[count].getLiterature().getName);
+            System.out.println(count + "Книга " + updateFiles[count].getLiterature().getName());
             countNewFiles++;
 
         }
@@ -55,7 +55,7 @@ public class Bibliographer extends Manager implements Reader, Librarian{
             updateFiles[countNewFiles++].setTakeDate(deliveredBooks[count].getTakeDate());
             updateFiles[countNewFiles++].setReader(deliveredBooks[count].getReader());
             updateFiles[countNewFiles++].setLiterature(deliveredBooks[count].getLiterature());
-            System.out.println(countNewFiles++ + "Книга " + updateFiles[countNewFiles++].getLiterature().getName);
+            System.out.println(countNewFiles++ + "Книга " + updateFiles[countNewFiles++].getLiterature().getName());
             countNewFiles++;
         }
         return updateFiles;

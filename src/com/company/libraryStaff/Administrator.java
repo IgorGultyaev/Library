@@ -8,6 +8,6 @@ public interface Administrator {
      void overdueNotification(Files[] files); //просроченное уведомление
      Files findBook (Files[] files, Literature desiredLiterature); //поиск книги
      void getBook(Literature literature, Files[] files, Reader reader); //выдача книги
-     void backBook(Literature literature, Files[] files, User returned);
+     void backBook(Literature literature, Files[] files, Reader returned);
 
 }

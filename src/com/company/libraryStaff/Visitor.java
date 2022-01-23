@@ -17,12 +17,15 @@ public class Visitor extends User implements Reader{
     @Override
     public void tekeBook(Literature literature) {
         this.literature = literature;
+        System.out.println("Посетитель" + super.getName() + " табельный номер " + this.serviceNum +
+                " взял " + literature.getName());
     }
 
     @Override
     public Literature returnBook() {
         Literature transfer = this.literature;
         this.literature = null;
+        System.out.println("Посетитель " + this.getName() + "отдал " + this.literature.getName());
         return transfer;
     }
 }
