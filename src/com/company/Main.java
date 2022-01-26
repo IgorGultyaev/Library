@@ -6,12 +6,10 @@ import com.company.Literature.Literature;
 import com.company.Literature.Newspaper;
 import com.company.libraryStaff.*;
 
-import java.util.Date;
-
 public class Main {
     public static void getBook(Literature literature, Files[] files, Reader toReader, Administrator administrator){
             administrator.getBook(literature,files,toReader);
-            toReader.tekeBook(literature);
+            toReader.takeBook(literature);
     }
     public static void returnBook(Literature literature, Files[] files, Reader returned,Administrator administrator){
         returned.returnBook();

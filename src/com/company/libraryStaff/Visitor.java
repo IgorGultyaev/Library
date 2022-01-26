@@ -15,7 +15,7 @@ public class Visitor extends User implements Reader{
 
 
     @Override
-    public void tekeBook(Literature literature) {
+    public void takeBook(Literature literature) {
         this.literature = literature;
         System.out.println("Посетитель" + super.getName() + " табельный номер " + this.serviceNum +
                 " взял " + literature.getName());

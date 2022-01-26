@@ -17,7 +17,7 @@ public class Manager extends User implements Reader {
     }
 
     @Override
-    public void tekeBook(Literature literature) {
+    public void takeBook(Literature literature) {
         this.literature = literature;
         System.out.println(" Сотрудник " + this.post + " табельный номер " + this.serviceNum + " " + super.getName() +
                 " взял " + literature.getName());
